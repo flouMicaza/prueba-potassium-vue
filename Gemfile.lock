@@ -402,7 +402,7 @@ DEPENDENCIES
   rubocop-rspec (~> 2.2)
   sass-rails (>= 6)
   scout_apm
-  send_grid_mailer
+  send_grid_mailer (~> 1.2.1)
   shakapacker (~> 6.2.0)
   shoulda-matchers
   sidekiq
