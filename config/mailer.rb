@@ -1,5 +1,8 @@
 Rails.application.config.action_mailer.raise_delivery_errors = false
-Rails.application.config.action_mailer.delivery_method = :aws_sdk
+Rails.application.config.action_mailer.delivery_method = :sendgrid
+Rails.application.config.action_mailer.sendgrid_settings = {
+  api_key: ENV['SENDGRID_API_KEY']
+}
 
 Rails.application.config.action_mailer.default_url_options = {
   host: ENV.fetch('APPLICATION_HOST'),
@@ -14,11 +17,3 @@ if ENV["EMAIL_RECIPIENTS"].present?
     subject_prefix: "[#{Heroku.stage.upcase}]"
   )
 end
-creds = Aws::Credentials.new(
-  ENV['AWS_ACCESS_KEY_ID'],
-  ENV['AWS_SECRET_ACCESS_KEY']
-)
-
-Aws::Rails.add_action_mailer_delivery_method(
-  :aws_sdk, credentials: creds, region: ENV.fetch('AWS_REGION', 'us-east-1')
-)

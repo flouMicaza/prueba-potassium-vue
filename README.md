@@ -76,7 +76,7 @@ You can (and should) use linter integrations for your text editor of choice, usi
 
 ## Sending Emails
 
-The emails can be send through the gem `aws-sdk-rails` using the `aws_sdk` delivery method.
+The emails can be send through the gem `send_grid_mailer` using the `sendgrid` delivery method.
 All the `action_mailer` configuration can be found at `config/mailer.rb`, which is loaded only on production environments.
 
 All emails should be sent using background jobs, by default we install `sidekiq` for that purpuse.
